@@ -1,6 +1,6 @@
 var app = angular.module('demo', ['ngNotify']);
 
-app.controller('MainCtrl', ['$scope', 'ngNotify', 
+app.controller('MainCtrl', ['$scope', 'ngNotify',
     function($scope, ngNotify) {
         'use strict';
 
@@ -25,24 +25,24 @@ app.controller('MainCtrl', ['$scope', 'ngNotify',
         ngNotify.set('This is my notice type!', 'notice');
 
         */
-       
+
         // Demo notifications...
 
         $scope.displayNotify = function(notify) {
             switch(notify) {
                 case 'success':
-                    ngNotify.set('You have successfully logged in!', {
+                    ngNotify.set('You have successfully logged in! <a href="#">Go to my profile</a>', {
                         type: 'success'
                     });
                     break;
                 case 'info':
-                    ngNotify.set('You have a new message in your inbox.', 'info');
+                    ngNotify.set('<b>You have a new message in your inbox.</b>', 'info');
                     break;
-                case 'warn': 
-                    ngNotify.set('Please login before accessing that part of the site.', 'warn');
+                case 'warn':
+                    ngNotify.set('<div class="warning">Please login before accessing that part of the site.</div>', 'warn');
                     break;
                 case 'error':
-                    ngNotify.set('The action you are trying to take does not exist.', 'error');
+                    ngNotify.set('The action you are trying to take does not exist. <a href="#">Click here for help</a>', 'error');
                     break;
                 case 'grimace':
                     ngNotify.set('An additional notification type to use.', 'grimace');
@@ -60,10 +60,10 @@ app.controller('MainCtrl', ['$scope', 'ngNotify',
 
         $scope.duration = 4000;
         $scope.durationOptions = [
-            { id: 500, value: '500 ms' }, 
-            { id: 1000, value: '1000 ms' }, 
-            { id: 2000, value: '2000 ms' }, 
-            { id: 4000, value: '4000 ms' }, 
+            { id: 500, value: '500 ms' },
+            { id: 1000, value: '1000 ms' },
+            { id: 2000, value: '2000 ms' },
+            { id: 4000, value: '4000 ms' },
             { id: 8000 , value: '8000 ms'}
         ];
 

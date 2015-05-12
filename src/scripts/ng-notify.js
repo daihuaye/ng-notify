@@ -19,16 +19,16 @@
         $templateCache.put('templates/ng-notify/ngNotify.html',
             '<div class="ngn" ng-class="ngNotify.notifyClass">' +
                 '<span class="ngn-dismiss" ng-click="dismiss()">&times;</span>' +
-                '<span ng-bind="ngNotify.notifyMessage"></span>' +
+                '<span ng-bind-html="ngNotify.notifyMessage"></span>' +
             '</div>'
         );
      }]);
 
      module.provider('ngNotify', function() {
 
-        this.$get = ['$document', '$compile', '$rootScope', '$timeout', '$interval', '$templateCache',
+        this.$get = ['$document', '$compile', '$rootScope', '$timeout', '$interval', '$templateCache', '$sce',
 
-            function($document, $compile, $rootScope, $timeout, $interval, $templateCache) {
+            function($document, $compile, $rootScope, $timeout, $interval, $templateCache, $sce) {
 
                 // Defaults...
 
@@ -298,7 +298,7 @@
 
                         notifyScope.ngNotify = {
                             notifyClass: notifyClass,
-                            notifyMessage: message
+                            notifyMessage: $sce.trustAsHtml(message)
                         };
 
                         el.fadeIn(200, function() {
